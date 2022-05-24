@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Length;
 
 class RegistrationFormType extends AbstractType
 {
@@ -20,6 +21,15 @@ class RegistrationFormType extends AbstractType
                     'autocomplete' => 'username',
                     'class' => 'form-control w-25',
                     'placeholder' => 'Nom d\'utilisateur'
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Entrez un nom d\'utilisateur',
+                    ]),
+                    new Length([
+                        'max' => 180,
+                        'maxMessage' => 'Le nom d\'utilisateur ne doit pas faire plus de {{ limit }} caractères',
+                    ]),
                 ],
             ])
             ->add('plainPassword', PasswordType::class, [
@@ -34,6 +44,10 @@ class RegistrationFormType extends AbstractType
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Entrez un mot de passe',
+                    ]),
+                    new Length([
+                        'max' => 255,
+                        'maxMessage' => 'Le mot de passe ne doit pas faire plus de {{ limit }} caractères',
                     ]),
                 ],
             ]);

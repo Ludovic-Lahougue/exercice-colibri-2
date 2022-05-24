@@ -19,7 +19,7 @@ class Article
     #[ORM\Column(type: 'string', length: 511)]
     private $description;
 
-    #[ORM\Column(type: 'string', length: 2047)]
+    #[ORM\Column(type: 'string', length: 4095)]
     private $contenu;
 
     public function getId(): ?int
