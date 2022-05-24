@@ -26,6 +26,13 @@
 						<li class="nav-item active">
 							<a class="nav-link" href="/">Accueil</a>
 						</li>
+						{% if app.user %}
+							{% if "ROLE_ADMIN" in app.user.roles %}
+								<li class="nav-item active">
+									<a class="nav-link" href="/article/new">Créer un article</a>
+								</li>
+							{% endif %}
+						{% endif %}
 					</ul>
 				</div>
 				<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">

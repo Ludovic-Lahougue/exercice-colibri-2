@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel article
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1 class="h3 mb-3 font-weight-normal">Nouvel article</h1>
+
+		{{ form_start(form) }}
+		<div class="form-group mb-3">
+			{{ form_row(form.titre) }}
+		</div>
+		<div class="form-group mb-3">
+			{{ form_row(form.description) }}
+		</div>
+		<div class="form-group mb-3">
+			{{ form_row(form.contenu) }}
+		</div>
+		<button type="submit" class="btn btn-primary mt-2">Créer</button>
+		{{ form_end(form) }}
+	</div>
+{% endblock %}
