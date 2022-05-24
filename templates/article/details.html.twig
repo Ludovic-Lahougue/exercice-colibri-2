@@ -12,6 +12,7 @@
 				{% if "ROLE_ADMIN" in app.user.roles %}
 					<hr/>
 					<a href="/article/edit/{{ article.id }}" class="btn btn-primary">Éditer</a>
+					<a href="/article/delete/{{ article.id }}" class="btn btn-danger ms-3" onclick="return confirm('Voulez-vous supprimer cet article ?')">Supprimer</a>
 				{% endif %}
 			{% endif %}
 		{% endif %}
