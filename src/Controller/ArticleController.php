@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController extends AbstractController
+class ArticleController extends AbstractController
 {
     private $em;
     public function __construct(EntityManagerInterface $em)
@@ -16,13 +16,13 @@ class HomeController extends AbstractController
         $this->em = $em;
     }
 
-    #[Route('/', name: 'colibri')]
-    public function index(): Response
+    #[Route('/article/{id}', name: 'article', methods: ['GET', 'HEAD'])]
+    public function index($id): Response
     {
         $repository = $this->em->getRepository(Article::class);
-        $articles = $repository->findBy([], ['id' => 'DESC']);
-        return $this->render('home.html.twig', [
-            'articles' => $articles
+        $article = $repository->find($id);
+        return $this->render('article/details.html.twig', [
+            'article' => $article
         ]);
     }
 }
