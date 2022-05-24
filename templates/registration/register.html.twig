@@ -16,6 +16,9 @@
             label: 'Password'
         }) }}
 		</div>
+		<div class="form-check">
+			{{ form_row(registrationForm.admin) }}
+		</div>
 		<a href="/login" class="link-primary">Déjà un compte ?</a><br>
 		<button type="submit" class="btn btn-primary mt-2">S'inscrire</button>
 		{{ form_end(registrationForm) }}

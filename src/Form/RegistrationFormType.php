@@ -6,6 +6,7 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -50,6 +51,14 @@ class RegistrationFormType extends AbstractType
                         'maxMessage' => 'Le mot de passe ne doit pas faire plus de {{ limit }} caractères',
                     ]),
                 ],
+            ])
+            ->add('admin', CheckboxType::class, [
+                'mapped' => false,
+                'attr' => [
+                    'class' => 'form-check-input',
+                ],
+                'label' => 'Compte admin',
+                'required' => false,
             ]);
     }
 
