@@ -8,6 +8,12 @@
 			<h1 class="text-center mb-4">{{ article.titre }}</h1>
 			<h3 class="text-center mb-4">{{ article.description }}</h3>
 			<p>{{ article.contenu }}</p>
+			{% if app.user %}
+				{% if "ROLE_ADMIN" in app.user.roles %}
+					<hr/>
+					<a href="/article/edit/{{ article.id }}" class="btn btn-primary">Éditer</a>
+				{% endif %}
+			{% endif %}
 		{% endif %}
 	</div>
 {% endblock %}
